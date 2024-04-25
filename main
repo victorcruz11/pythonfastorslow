@@ -1,0 +1,300 @@
+import time
+import numpy as np
+import matplotlib.pyplot as plt
+
+plt.close('all')
+
+Y_1D = np.array([10, 100, 1000])
+Y_2D = np.array([100, 10000, 1000000])
+arrX_1D = np.zeros(3)
+arrX_Numpy1D = np.zeros(3)
+arrX_2D = np.zeros(3)
+arrX_Numpy2D = np.zeros(3)
+
+# 1D array of 10  =============================================================
+
+start_time = time.perf_counter()
+
+arr1 = []
+arr2 = []
+result = []
+
+counter = 0
+for i in range(1, 11):       # This iteration creates the first array.
+    counter += 2
+    arr1.append(counter)
+    
+counter = 0
+for i in range(1, 11):       # This iteration creates the second array.
+    counter += 3
+    arr2.append(counter)
+
+for i in range(0,len(arr1)):        # This iteration multiplies the two arrays 
+  result.append(arr1[i] * arr2[i])  # to get a results array.
+  
+end_time = time.perf_counter()
+execution_time = end_time - start_time
+arrX_1D[0] = execution_time
+
+
+# Numpy 1D array of 10 ========================================================
+
+start_time = time.perf_counter()
+
+arr1 = np.arange(2, 21, 2)
+arr2 = np.arange(3, 31, 3)
+
+result = np.multiply(arr1, arr2)
+
+end_time = time.perf_counter()
+execution_time = end_time - start_time
+arrX_Numpy1D[0] = execution_time
+
+
+# 1D array of 100 =============================================================
+start_time = time.perf_counter()
+
+arr1 = []
+arr2 = []
+result = []
+
+counter = 0
+for i in range(1, 101):       # This iteration creates the first array.
+    counter += 2
+    arr1.append(counter)
+    
+counter = 0
+for i in range(1, 101):       # This iteration creates the second array.
+    counter += 3
+    arr2.append(counter)
+
+for i in range(0,len(arr1)):        # This iteration multiplies the two arrays 
+  result.append(arr1[i] * arr2[i])  # to get a results array.
+  
+end_time = time.perf_counter()
+execution_time = end_time - start_time
+arrX_1D[1] = execution_time
+
+
+# Numpy 1D array of 100 =======================================================
+start_time = time.perf_counter()
+
+arr1 = np.arange(2, 201, 2)
+arr2 = np.arange(3, 301, 3)
+
+result = np.multiply(arr1, arr2)
+
+end_time = time.perf_counter()
+execution_time = end_time - start_time
+arrX_Numpy1D[1] = execution_time
+
+
+# 1D array of 1000 ============================================================
+start_time = time.perf_counter()
+
+arr1 = []
+arr2 = []
+result = []
+
+counter = 0
+for i in range(1, 1001):       # This iteration creates the first array.
+    counter += 2
+    arr1.append(counter)
+    
+counter = 0
+for i in range(1, 1001):       # This iteration creates the second array.
+    counter += 3
+    arr2.append(counter)
+
+for i in range(0,len(arr1)):        # This iteration multiplies the two arrays 
+  result.append(arr1[i] * arr2[i])  # to get a results array.
+
+end_time = time.perf_counter()
+execution_time = end_time - start_time
+arrX_1D[2] = execution_time
+
+
+# Numpy 1D array of 1000 ======================================================
+
+start_time = time.perf_counter()
+
+arr1 = np.arange(2, 2001, 2)
+arr2 = np.arange(3, 3001, 3)
+
+
+result = np.multiply(arr1, arr2)
+
+end_time = time.perf_counter()
+execution_time = end_time - start_time
+arrX_Numpy1D[2] = execution_time
+
+
+# 2D array of 10x10 ===========================================================
+
+start_time = time.perf_counter()
+
+arr1 = []
+arr2 = []
+result = []
+
+counter = 0
+for i in range(1, 11):          # This iteration creates the first array.
+    row = []
+    for j in range(1, 11):
+        counter += 2
+        row.append(counter)
+    arr1.append(row)
+        
+counter = 0
+for i in range(1, 11):          # This iteration creates the second array.
+    row = []
+    for j in range(1, 11):
+        counter += 3
+        row.append(counter)
+    arr2.append(row)    
+    
+for i in range(0,len(arr1)):    # This iteration multiplies the two arrays
+    row = []                    # to get a results array.
+    for j in range(0, len(arr1[i])):
+        row.append(arr1[i][j]*arr2[i][j])
+    result.append(row)
+
+end_time = time.perf_counter()
+execution_time = end_time - start_time
+arrX_2D[0] = execution_time
+
+
+# Numpy 2D array of 10x10 =====================================================
+
+start_time = time.perf_counter()
+
+arr1 = np.arange(2, 201, 2).reshape(10,10)
+arr2 = np.arange(3, 301, 3).reshape(10,10)
+
+result = np.multiply(arr1, arr2)
+
+end_time = time.perf_counter()
+execution_time = end_time - start_time
+arrX_Numpy2D[0] = execution_time
+
+
+# 2D array of 100x100 =========================================================
+
+start_time = time.perf_counter()
+
+arr1 = []
+arr2 = []
+result = []
+
+counter = 0
+for i in range(1, 101):         # This iteration creates the first array.
+    row = []
+    for j in range(1, 11):
+        counter += 2
+        row.append(counter)
+    arr1.append(row)
+        
+counter = 0
+for i in range(1, 101):         # This iteration creates the second array.
+    row = []
+    for j in range(1, 11):
+        counter += 3
+        row.append(counter)
+    arr2.append(row)    
+    
+for i in range(0,len(arr1)):    # This iteration multiplies the two arrays
+    row = []                    # to get a results array.
+    for j in range(0, len(arr1[i])):
+        row.append(arr1[i][j]*arr2[i][j])
+    result.append(row)
+
+end_time = time.perf_counter()
+execution_time = end_time - start_time
+arrX_2D[1] = execution_time
+
+
+#2D array of 100x100 ==========================================================
+
+start_time = time.perf_counter()
+
+arr1 = np.arange(2, 20001, 2).reshape(100,100)
+arr2 = np.arange(3, 30001, 3).reshape(100,100)
+
+result = np.multiply(arr1, arr2)
+
+end_time = time.perf_counter()
+execution_time = end_time - start_time
+arrX_Numpy2D[1] = execution_time
+
+
+# 2D array of 1000x1000 =======================================================
+
+start_time = time.perf_counter()
+
+arr1 = []
+arr2 = []
+result = []
+
+counter = 0
+for i in range(1, 1001):            # This iteration creates the first array.
+    row = []
+    for j in range(1, 11):
+        counter += 2
+        row.append(counter)
+    arr1.append(row)
+        
+counter = 0
+for i in range(1, 1001):            # This iteration creates the second array.
+    row = []
+    for j in range(1, 11):
+        counter += 3
+        row.append(counter)
+    arr2.append(row)    
+    
+for i in range(0,len(arr1)):        # This iteration multiplies the two arrays
+    row = []                        # to get a results array.
+    for j in range(0, len(arr1[i])):
+        row.append(arr1[i][j]*arr2[i][j])
+    result.append(row)
+
+end_time = time.perf_counter()
+execution_time = end_time - start_time
+arrX_2D[2] = execution_time
+
+
+# Numpy 2D array of 1000x1000 =================================================
+
+start_time = time.perf_counter()
+
+arr1 = np.arange(2, 2000001, 2).reshape(1000,1000)
+arr2 = np.arange(3, 3000001, 3).reshape(1000,1000)
+
+result = np.multiply(arr1, arr2)
+
+end_time = time.perf_counter()
+execution_time = end_time - start_time
+arrX_Numpy2D[2] = execution_time
+
+
+# =============================================================================
+plt.figure()
+plt.figure(figsize=(9,4))
+plt.title('1D Array Multiplication with Pure Python')
+plt.semilogy(arrX_1D, Y_1D, 's-', lw=1, color='green', label='Pure Python Method')
+plt.semilogy(arrX_Numpy1D, Y_1D, 's-', lw=1, color='blue', label='Numpy Method')
+plt.grid(color='silver')
+plt.legend(loc='lower right')
+plt.xlabel('1D Array Execution Time (seconds)')
+plt.ylabel('1D Array Size')
+plt.tight_layout()
+
+plt.figure()
+plt.figure(figsize=(9,4))
+plt.title('2D Array Multiplication with Numpy')
+plt.semilogy(arrX_2D, Y_2D, 's-', lw=1, color='green', label='Pure Python Method')
+plt.semilogy(arrX_Numpy2D, Y_2D, 's-', lw=1, color='blue', label='Numpy Method')
+plt.grid(color='silver')
+plt.legend(loc='lower right')
+plt.xlabel('2D Array Execution Time (seconds)')
+plt.ylabel('2D Array Size')
+plt.tight_layout()
